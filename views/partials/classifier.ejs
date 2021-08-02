@@ -1,0 +1,178 @@
+<div id="codeSection">
+	<div class="row">
+		<div class="col-1"></div>
+		<div class="col-10">
+			<h2 class="navunder text-center"><strong>Card Classification</strong></h2>
+			<hr class="style2">
+			<div class="row">
+				<div class="col-12">
+					<a id="cardClassTitle" name="cardClassTitle" href="cardClassTitle" class="veryHidden"></a>
+					<h4 class="text-left">CARD CONTENTS:</h4>
+					<div class="mar5BR">
+						<h6 class="text-left"><strong>Witnessed Action:</strong></h6>
+						<span class="text-left mar5BR"><%= card.action %></span>
+					</div>
+					<hr class="style3">	
+					<div class="mar5BR">
+						<h6 class="text-left"><strong>Conversation:</strong></h6>
+						<span class="text-left mar5BR"><%= card.conversation %></span>
+					</div>
+					<hr class="style3">	
+					<div class="mar5BR">
+						<h6 class="text-left"><strong>Corrective Action:</strong></h6>
+						<span class="text-left mar5BR"><%= card.corrective %></span>						
+					</div>
+				</div>           
+			</div>			
+			<br>
+			<hr class="style2">	
+		</div>
+		<div class="col-1"></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">
+			<div class="row">
+				<div class="col-12">
+					<h5 class="text-center">What is the Quality of this card:</h5>
+					<h6 class="text-center">(1 Poor to 5 Outstanding)</h6>
+				</div>           
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-2">
+					<img id="qualityimg0" value="0" class="width95" src="https://res.cloudinary.com/hitchadvisor/image/upload/v1621240897/one.png">
+					<br>
+					<h6 class="ruleGap text-center">One</h6>
+				</div>
+				<div class="col-2">
+					<img id="qualityimg1" value="1" class="width95" src="https://res.cloudinary.com/hitchadvisor/image/upload/v1621240900/two.png">
+					<h6 class="ruleGap text-center">Two</h6>
+				</div> 
+				<div class="col-2">
+					<img id="qualityimg2" value="2" class="width95" src="https://res.cloudinary.com/hitchadvisor/image/upload/v1621240903/three.png">
+					<h6 class="ruleGap text-center">Three</h6>
+				</div> 
+				<div class="col-2">
+					<img id="qualityimg3" value="3" class="width95" src="https://res.cloudinary.com/hitchadvisor/image/upload/v1621240943/four.png">
+					<h6 class="ruleGap text-center">Four</h6>
+				</div> 
+				<div class="col-2">
+					<img id="qualityimg4" value="4" class="width95" src="https://res.cloudinary.com/hitchadvisor/image/upload/v1621240949/five.png">
+					<h6 class="ruleGap text-center">Five</h6>
+				</div>
+				<div class="col-1"></div> 
+			</div>
+			<br>
+			<hr class="style2">	
+			<div class="row">
+				<div class="col-12">
+					<h5 class="text-center">Is the Tone Positive, Neutral or Negative:</h5>
+				</div>           
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-3"></div> 
+				<div class="col-4 col-md-2">
+					<img id="sentimg0" value="0" class="width95" src="https://res.cloudinary.com/hitchadvisor/image/upload/v1621202948/negative.png">
+					<h6 class="ruleGap text-center">Negative</h6>
+				</div>
+				<div class="col-4 col-md-2">
+					<img id="sentimg1" value="1" class="width95" src="https://res.cloudinary.com/hitchadvisor/image/upload/v1621202949/neutral.png">
+					<h6 class="ruleGap text-center">Neutral</h6>
+				</div>
+				<div class="col-4 col-md-2">
+					<img id="sentimg2" value="2" class="width95" src="https://res.cloudinary.com/hitchadvisor/image/upload/v1621202725/positive.png">
+					<br>
+					<h6 class="ruleGap text-center">Positive</h6>
+				</div>
+				<div class="col-md-3"></div> 
+			</div>
+			<br>
+			<hr class="style2">	
+			<div class="row">
+				<div class="col-12">
+					<h5 class="text-center">Which Life Saving Rule is Primarily Applicable:</h5>
+				</div>           
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-4 col-md-2">
+					<img id="ruleimg0" value="0" class="width95" src="https://res.cloudinary.com/corazonoil/image/upload/q_auto/v1557776152/bypassing-safety-controls_pmcqsv.png">
+					<br>
+					<h6 class="ruleGap text-center">Bypassing Safety Controls</h6>
+				</div>
+				<div class="col-4 col-md-2">
+					<img id="ruleimg1" value="1" class="width95" src="https://res.cloudinary.com/corazonoil/image/upload/q_auto/v1557776152/confined-space_tf0eub.png">
+					<h6 class="ruleGap text-center">Confined Space</h6>
+				</div> 
+				<div class="col-4 col-md-2">
+					<img id="ruleimg2" value="2" class="width95" src="https://res.cloudinary.com/corazonoil/image/upload/q_auto/v1557776152/driving_wbkkpe.png">
+					<h6 class="ruleGap text-center">Driving</h6>
+				</div>
+				<div class="col-md-3"></div> 
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-3"></div> 
+				<div class="col-4 col-md-2">
+					<img id="ruleimg3" value="3" class="width95" src="https://res.cloudinary.com/corazonoil/image/upload/q_auto/v1557776152/energy-isolation_aipdck.png">
+					<br>
+					<h6 class="ruleGap text-center">Energy Isolation</h6>
+				</div>
+				<div class="col-4 col-md-2">
+					<img id="ruleimg4" value="4" class="width95" src="https://res.cloudinary.com/corazonoil/image/upload/q_auto/v1557776152/hot-work_xmobx4.png">
+					<h6 class="ruleGap text-center">Hot Work</h6>
+				</div> 
+				<div class="col-4 col-md-2">
+					<img id="ruleimg5" value="5" class="width95" src="https://res.cloudinary.com/corazonoil/image/upload/q_auto/v1557776152/line-of-fire_tkwu57.png">
+					<h6 class="ruleGap text-center">Line of Fire</h6>
+				</div>
+				<div class="col-md-3 col-md-2"></div>  
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-3"></div> 
+				<div class="col-4 col-md-2">
+					<img id="ruleimg6" value="6" class="width95" src="https://res.cloudinary.com/corazonoil/image/upload/q_auto/v1557776152/safe-mechanical-lifting_r7abfo.png">
+					<br>
+					<h6 class="ruleGap text-center">Safe Mechanical Lifting</h6>
+				</div>
+				<div class="col-4 col-md-2">
+					<img id="ruleimg7" value="7" class="width95" src="https://res.cloudinary.com/corazonoil/image/upload/q_auto/v1557776152/work-authorisation_bdg22p.png">
+					<h6 class="ruleGap text-center">Work Authorisation</h6>
+				</div> 
+				<div class="col-4 col-md-2">
+					<img id="ruleimg8" value="8" class="width95" src="https://res.cloudinary.com/corazonoil/image/upload/q_auto/v1557776152/working-at-height_cavgfn.png">
+					<h6 class="ruleGap text-center">Working at Height</h6>
+				</div>
+				<div class="col-md-3 col-md-2"></div>  
+			</div>
+			<br>
+			<br>
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-xs-12 col-md-4">
+					<button type="button" id="opinionBtn" name="opinionBtn" class="btn btn-outline-light">Submit Classification</button>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-12">
+					<div id="msg" class="text-center"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div id="msgCode" class="text-center"></div>
+					<input type="text" name="cardId" id="cardId" value="<%= card.id %>">
+				</div>
+			</div>
+			<hr class="style2">
+		</div>
+		<div class="col-sm-2"></div>
+	</div>
+</div>

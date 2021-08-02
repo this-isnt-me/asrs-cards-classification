@@ -1,0 +1,71 @@
+<div class="row">
+	<div class="col-3"></div>
+	<div class="col-6"><hr class="style3"></div>
+	<div class="col-3"></div>
+	<div class="col-3"></div>
+	<div class="col-6">
+		<h4 class="text-center"><strong> <%= 'LDA Topics - ' + returnDocu.lda_topics.length %> </strong></h4>
+	</div>
+	<div class="col-3"></div>
+ 	<% for (let i = 0; i < returnDocu.lda_topics.length;  i++ ) { %>
+		<div class="col-2">
+			<div class="mar5BR">
+				<h6 class="text-center"><strong> LDA Topic Number: </strong></h6>
+				<h6 class="text-center"><%= "( " + returnDocu.lda_topics[i] + " )" %></h6>
+			</div>
+		</div>
+		<div class="col-10">
+			<div class="mar5BR">
+				<h6 class="text-left"><strong> Top 15 Key Words Ranked by Importance: </strong></h6>
+				<span class="text-left mar5BR"><%= returnDocu.lda_keywords[i] %></span>
+			</div>
+		</div>
+	<div class="col-3"></div>
+	<div class="col-6"><hr class="style3"></div>
+	<div class="col-3"></div>
+	<% } %>
+	<div class="col-3"></div>
+	<div class="col-6">
+		<h4 class="text-center"><strong> <%= 'NMF Topics - ' + returnDocu.nmf_topics.length %> </strong></h4>
+	</div>
+	<div class="col-3"></div>
+ 	<% for (let i = 0; i < returnDocu.nmf_topics.length;  i++ ) { %>
+		<div class="col-2">
+			<div class="mar5BR">
+				<h6 class="text-center"><strong> NMF Topic Number: </strong></h6>
+				<h6 class="text-center"><%= "( " + returnDocu.nmf_topics[i] + " )" %></h6>
+			</div>
+		</div>
+		<div class="col-10">
+			<div class="mar5BR">
+				<h6 class="text-left"><strong> Top 15 Key Words Ranked by Importance: </strong></h6>
+				<span class="text-left mar5BR"><%= returnDocu.nmf_keywords[i] %></span>
+			</div>
+		</div>
+	<div class="col-3"></div>
+	<div class="col-6"><hr class="style3"></div>
+	<div class="col-3"></div>
+	<% } %>
+	<div class="col-3"></div>
+	<div class="col-6">
+		<h4 class="text-center"><strong> <%= 'LSA Topics - ' + returnDocu.lsa_topics.length %> </strong></h4>
+	</div>
+	<div class="col-3"></div>
+ 	<% for (let i = 0; i < returnDocu.lsa_topics.length;  i++ ) { %>
+		<div class="col-2">
+			<div class="mar5BR">
+				<h6 class="text-center"><strong> LSA Topic Number: </strong></h6>
+				<h6 class="text-center"><%= "( " + returnDocu.lsa_topics[i] + " )" %></h6>
+			</div>
+		</div>
+		<div class="col-10">
+			<div class="mar5BR">
+				<h6 class="text-left"><strong> Top 15 Key Words Ranked by Importance: </strong></h6>
+				<span class="text-left mar5BR"><%= returnDocu.lsa_keywords[i] %></span>
+			</div>
+		</div>
+	<div class="col-3"></div>
+	<div class="col-6"><hr class="style3"></div>
+	<div class="col-3"></div>
+	<% } %>
+</div>

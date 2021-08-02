@@ -1,0 +1,72 @@
+<div id="reportSection">
+	<div class="row">
+		<div class="col-1"></div>
+		<div class="col-10">
+			<h2 class="navunder text-center"><strong>Random ASRS Safety Report</strong></h2>
+			<hr class="style3">
+			<div class="row">
+				<div class="col-4">
+					<div class="mar5BR">
+						<h6 class="text-left"><strong>ACN Number:</strong></h6>
+						<span id="acnNumber" class="text-left mar5BR"><%= returnDocu.acn %></span>						
+					</div>
+				</div> 
+				<div class="col-4">
+					<div class="mar5BR">
+						<h6 class="text-left"><strong>Detector:</strong></h6>
+						<span class="text-left mar5BR"><%= returnDocu.reporter %></span>						
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="mar5BR">
+						<h6 class="text-left"><strong>When Detected:</strong></h6>
+						<span class="text-left mar5BR"><%= returnDocu.when %></span>						
+					</div>
+				</div> 
+			</div>
+			<hr class="style3">	
+			<div class="row">
+				<div class="col-4">
+					<div class="mar5BR">
+						<h6 class="text-left"><strong>Aircraft Details:</strong></h6>
+						<span class="text-left mar5BR"><%= returnDocu.aircraft %></span>						
+					</div>
+				</div> 
+				<div class="col-4">
+					<div class="mar5BR">
+						<h6 class="text-left"><strong>Mission:</strong></h6>
+						<span class="text-left mar5BR"><%= returnDocu.mission %></span>						
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="mar5BR">
+						<h6 class="text-left"><strong>Time of Day:</strong></h6>
+						<span class="text-left mar5BR"><%= returnDocu.tod %></span>						
+					</div>
+				</div> 
+			</div>
+			<hr class="style3">
+			<div class="row">
+				<div class="col-12">
+					<div class="mar5BR">
+						<h6 class="text-left"><strong>Report Narrative:</strong></h6>
+						<span class="text-left mar5BR"><%= returnDocu.nar %></span>
+					</div>
+				</div>           
+			</div>
+			<hr class="style3">
+			<div id="topicsSection"></div>
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-sm-12 col-md-4">
+					<button type="button" id="classifyReport" name="classifyReport" class="modalForm btn btn-outline-light">Classify Report</button>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			<br>
+			<div id="inforetreivalSection"></div>
+			<hr class="style2">
+		</div>
+		<div class="col-1"></div>
+	</div>
+</div>
