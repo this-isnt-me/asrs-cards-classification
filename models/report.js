@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 let reportSchema = new mongoose.Schema({
-	ACN : String,
+	"ACN" : String,
 	"Local Time Of Day" : String,
 	"Flight Conditions" : String,
 	"Light" : String,
@@ -55,7 +55,10 @@ let reportSchema = new mongoose.Schema({
 	"lda_xy": Array,
 	"lsa_xy": Array,
 	"nmf_xy": Array,
-	"top_15":Array
+	"top_15":Array,
+	"ner": Array,
+	"sentiment": String,
+	"objective": String
 },
 { 
 	collection : 'nas_dropped_version' 

@@ -20,7 +20,8 @@ $(document).on('click', "#staticCont #topicsSection #generateTopics", function(e
 		type : "POST",
 		contentType : "application/json"
 	}).done( function(result){
-		$("#staticCont #topicsSection #msg").text('')
+		console.log(result)
+		//$("#staticCont #topicsSection #msg").text('')
 	})
 	.fail(function(err){
 		console.log('Failure');

@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="col-3">
+		<div class="mar5BR">
+			<h6 class="text-left"><strong>Translated From : <%= returnDocu.language %></strong></h6>	
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="mar5BR">
+			<h6 class="text-left"><strong>Confidence : <%= returnDocu.confidence  + "%"%></strong></h6>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-12">
+		<div class="mar5BR">
+			<h6 class="text-left"><strong>Translation :</strong></h6>
+			<textarea id="translationText" name="translationText" class="width100"><%= returnDocu.translation %></textarea>
+			<input type="number" id="polarity" name="polarity" class="veryHidden" value="<%= returnDocu.polarity %>">
+			<input type="number" id="subjectivity" name="subjectivity" class="veryHidden" value="<%= returnDocu.subjectivity %>">
+		</div>
+	</div>
+</div>

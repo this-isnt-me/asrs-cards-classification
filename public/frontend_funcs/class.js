@@ -3,12 +3,39 @@ $(document).on('click', "#staticCont #btnSection #selectReport", function(e){
 	e.preventDefault();
 	e.stopPropagation();
 	$.ajax({
-		url : "/class/getsample",    
+		url : "/class/getrandomsample",    
 		processData: true,
 		type : "GET",
 		contentType : "application/json"
 	}).done( function(result){
 		$("#masterCont").empty().append(result);
+		$("#masterCont #reportSection #guageSection #guageOne").empty().append('<canvas id="guage1"></canvas>');
+		$("#masterCont #reportSection #guageSection #guageTwo").empty().append('<canvas id="guage2"></canvas>');
+		let polarity = $("#masterCont #reportSection #guageSection #polarity").val()
+		let subjectivity = $("#masterCont #reportSection #guageSection #subjectivity").val()
+		updateGuages(polarity, subjectivity);
+		let guageLabelOne = "Stongly Negative"
+		if (polarity < -0.2 && polarity > -0.6){
+			guageLabelOne = "Negative"
+		} else if (polarity < 0.2 && polarity > -0.2){
+			guageLabelOne = "Neutral"
+		} else if (polarity < 0.6 && polarity > 0.2){
+			guageLabelOne = "Positive"
+		} else if (polarity > 0.6){
+			guageLabelOne = "Stongly Positive"
+		} 
+		let guageLabelTwo = "Stongly Objective"
+		if (subjectivity < 0.4 && subjectivity > 0.2){
+			guageLabelTwo = "Objective"
+		} else if (subjectivity < 0.6 && subjectivity > 0.4){
+			guageLabelTwo = "Balanced"
+		} else if (subjectivity < 0.8 && subjectivity > 0.6){
+			guageLabelTwo = "Subjective"
+		} else if (subjectivity > 0.8){
+			guageLabelTwo = "Stongly Subjective"
+		}
+		$("#masterCont #reportSection #guageSection #guageLabelOne").text(guageLabelOne);
+		$("#masterCont #reportSection #guageSection #guageLabelTwo").text(guageLabelTwo);
 		let formData = {
 			"acnCode": $("#masterCont #reportSection #acnNumber").text()
 		};
@@ -19,7 +46,6 @@ $(document).on('click', "#staticCont #btnSection #selectReport", function(e){
 			type : "POST",
 			contentType : "application/json"
 		}).done( function(result){
-			console.log('Success');
 			$("#masterCont #reportSection #topicsSection").empty().append(result);
 		})
 		.fail(function(err){
@@ -97,9 +123,10 @@ const getScatterData = (formData) =>{
 		contentType : "application/json"
 	}).done( function(result){
 		$("#veryHiddenDiv2").removeClass( "veryHidden" );
-		createScatter("scatter1", 'LDA Document Clusters', result.lda);
-		createScatter("scatter2", 'NMF Document Clusters', result.nmf);
-		createScatter("scatter3", 'LSA Document Clusters', result.lsa);
+		createScatter("scatter1", 'Sentiment-Objectivity Clusters', result.sentObj, 'Sentiment (Negative to Positive)', 'Objectivity (Objective to Subjective)');
+		createScatter("scatter2", 'NMF Document Clusters', result.nmf, '', '');
+		createScatter("scatter3", 'LSA Document Clusters', result.lsa, '', '');
+		createScatter("scatter4", 'LDA Document Clusters', result.lda, '', '');
 	})
 	.fail(function(err){
 		console.log('Failure');
@@ -141,7 +168,17 @@ const createCloud = (wordElement, title, dataArray) =>{
 	title.fill = am4core.color("#ffffff");
 }
 
-const createScatter = (wordElement, title, dataArray) =>{
+const createScatter = (wordElement, title, dataArray, xLabel, yLabel) =>{
+	let xmax = 20;
+	let xmin = -20;
+	let ymax = 20;
+	let ymin = -20;
+	if (wordElement === "scatter1"){
+		xmax = 1;
+		xmin = -1;
+		ymax = 1;
+		ymin = 0;
+	}
 	let ctx = document.getElementById(wordElement).getContext('2d');
 	let scatterChart = new Chart(ctx, {
 		type: 'scatter',
@@ -172,14 +209,30 @@ const createScatter = (wordElement, title, dataArray) =>{
 				}
 			},
 			scales: {
+				  x: {
+					title:{
+					  color: "#000",
+					  display: true,
+					  text: xLabel
+					},
+					min: xmin,
+				    max: xmax
+				  },
+				  y: {
+					title:{
+					  color: "#000",
+					  display: true,
+					  text: yLabel
+					},
+					min: ymin,
+				    max: ymax
+				  },
 				  yAxes: [{
 					gridLines:{
 					  color: "#fff",
 					  lineWidth:2,
 					},
 					ticks: {
-						min: -20,
-						max: 20,
 						stepSize: 2
 					}
 				  }],
@@ -189,8 +242,6 @@ const createScatter = (wordElement, title, dataArray) =>{
 					  lineWidth:2
 					},
 					ticks: {
-						min: -20,
-						max: 20,
 						stepSize: 2
 					}
 				  }]
@@ -199,3 +250,147 @@ const createScatter = (wordElement, title, dataArray) =>{
 		}
 	});
 }
+
+
+const updateGuages = (polarity, subjectivity) => {
+	console.log(polarity, subjectivity)
+	let optsOne = {
+		// color configs
+		colorStart: "#6fadcf",
+		colorStop: void 0,
+		gradientType: 0,
+		strokeColor: "#e0e0e0",
+		generateGradient: true,
+		percentColors: [[0.0, "#ff0000" ], [0.25, "#ffc100"], [0.50, "#ffff00"], [0.75, "#d6ff00"], [1.0, "#63ff00"]],
+
+		// customize pointer
+		pointer: {
+		  length: 0.8,
+		  strokeWidth: 0.035,
+		  iconScale: 1.0,		
+		  color: '#FFFFFF'
+		},
+
+		// static labels
+		staticLabels: {
+		  font: "15px sans-serif",
+		  labels: [-1, -0.5, 0, 0.5, 1],
+		  fractionDigits: 1,		
+		  color: '#FFFFFF'
+		},
+		
+		// render ticks
+		renderTicks: {
+		  divisions: 5,
+		  divWidth: 1.1,
+		  divLength: 0.7,
+		  divColor: "#FFFFFF",
+		  subDivisions: 3,
+		  subLength: 0.5,
+		  subWidth: 0.6,
+		  subColor: "#FFFFFF"
+		},
+
+		// the span of the gauge arc
+		angle: 0.025,
+
+		// line thickness
+		lineWidth: 0.44,
+
+		// radius scale
+		radiusScale: 1.0,
+
+		// font size
+		fontSize: 40,
+
+		// if false, max value increases automatically if value > maxValue
+		limitMax: false,
+
+		// if true, the min value of the gauge will be fixed
+		limitMin: false,
+
+		// High resolution support
+		highDpiSupport: true
+
+	};
+	let targetOne = document.getElementById('guage1'); 
+	let gaugeOne = new Gauge(targetOne).setOptions(optsOne);
+	gaugeOne.maxValue = 1;
+	gaugeOne.setMinValue(-1); 
+	gaugeOne.set(polarity);
+	gaugeOne.animationSpeed = 32
+	let optsTwo = {
+		// color configs
+		colorStart: "#6fadcf",
+		colorStop: void 0,
+		gradientType: 0,
+		strokeColor: "#e0e0e0",
+		generateGradient: true,
+		percentColors: [[0.0, "#ff0000" ], [0.25, "#ffc100"], [0.50, "#ffff00"], [0.75, "#d6ff00"], [1.0, "#63ff00"]],
+
+		// customize pointer
+		pointer: {
+		  length: 0.8,
+		  strokeWidth: 0.035,
+		  iconScale: 1.0,		
+		  color: '#FFFFFF'
+		},
+
+		// static labels
+		staticLabels: {
+		  font: "15px sans-serif",
+		  labels: [0, 0.25, 0.5, 0.75, 1],
+		  fractionDigits: 1,		
+		  color: '#FFFFFF'
+		},
+		
+		// render ticks
+		renderTicks: {
+		  divisions: 5,
+		  divWidth: 1.1,
+		  divLength: 0.7,
+		  divColor: "#FFFFFF",
+		  subDivisions: 3,
+		  subLength: 0.5,
+		  subWidth: 0.6,
+		  subColor: "#FFFFFF"
+		},
+
+		// the span of the gauge arc
+		angle: 0.025,
+
+		// line thickness
+		lineWidth: 0.44,
+
+		// radius scale
+		radiusScale: 1.0,
+
+		// font size
+		fontSize: 40,
+
+		// if false, max value increases automatically if value > maxValue
+		limitMax: false,
+
+		// if true, the min value of the gauge will be fixed
+		limitMin: false,
+
+		// High resolution support
+		highDpiSupport: true
+
+	};
+	let targetTwo = document.getElementById('guage2'); 
+	let gaugeTwo = new Gauge(targetTwo).setOptions(optsTwo);
+	gaugeTwo.maxValue = 1;
+	gaugeTwo.setMinValue(0); 
+	gaugeTwo.set(subjectivity);
+	gaugeTwo.animationSpeed = 32
+};
+
+$(document).on('click', "#mainCont .toggle_btn", function(e){
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    e.stopPropagation();
+    let id = $(this).attr('id').replace('toggle_btn','');
+	$("#hidden_sec" + id).slideToggle(800);
+	$("#toggle_icon" + id).toggleClass("down");
+});

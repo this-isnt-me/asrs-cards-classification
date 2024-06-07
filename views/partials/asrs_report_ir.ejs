@@ -1,29 +1,53 @@
 <div class="row">
-	<div class="col-3"></div>
-	<div class="col-6"><hr class="style3"></div>
-	<div class="col-3"></div>
- 	<% for (let i = 0; i < returnDocu.acnArray.length;  i++ ) { %>
-		<div class="col-6">
-			<div class="mar5BR">
-				<h6 class="text-left"><strong> Report Ref: </strong></h6>
-				<span class="text-left mar5BR"><%= returnDocu.acnArray[i] %></span>
+	<div class="col-1"></div>
+	<div class="col-10"><hr class="style3"></div>
+	<div class="col-1"></div>
+	<div class="col-12">
+		<div class="mar5BR text-center">
+			<div class="row">
+				<div class="col-12">
+					<h5 class="toggle_btn" id="<%= "toggle_btn" + returnDocu.acnArray.length + 1 %>"><strong>Summary of 10 Most Relevant Narratives:</strong> <i name="<%= "toggle_icon" + returnDocu.acnArray.length + 1 %>" id="<%= "toggle_icon" + returnDocu.acnArray.length + 1 %>" class="fas fa-plus rotate whiteTxt"></i></h5>
+				</div>
+			</div>
+			<div class="veryHidden" id="<%= "hidden_sec" + returnDocu.acnArray.length + 1 %>">
+				<p class="text-justify"><%= returnDocu.summaryString %></p>
 			</div>
 		</div>
-		<div class="col-6">
+	</div>
+	<div class="col-1"></div>
+	<div class="col-10"><hr class="style3"></div>
+	<div class="col-1"></div>
+ 	<% for (let i = 0; i < returnDocu.acnArray.length;  i++ ) { %>
+		<div class="col-4">
 			<div class="mar5BR">
-				<h6 class="text-left"><strong> Similarity Score: </strong></h6>
-				<span class="text-left mar5BR"><%= returnDocu.scoreArray[i] %></span>
+				<h6 class="text-left"><strong>Report Ref:</strong> <%= returnDocu.acnArray[i] %></h6>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="mar5BR">
+				<h6 class="text-center"><strong>Similarity Score:</strong> <%= returnDocu.scoreArray[i] %></h6>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="mar5BR">
+				<h6 class="text-right"><strong>Class:</strong> <%= returnDocu.classArray[i] %></h6>
 			</div>
 		</div>
 		<div class="col-12">
-			<div class="mar5BR">
-				<h6 class="text-left"><strong> Narrative: </strong></h6>
-				<span class="text-left mar5BR"><%= returnDocu.narrativeArray[i] %></span>
+			<div class="mar5BR text-center">
+				<div class="row">
+					<div class="col-12">
+						<h5 class="toggle_btn" id="<%= "toggle_btn" + [i] %>"><strong> Narrative:</strong> <i name="<%= "toggle_icon" + [i] %>" id="<%= "toggle_icon" + [i] %>" class="fas fa-plus rotate whiteTxt"></i></h5>
+					</div>
+				</div>
+				<div class="veryHidden" id="<%= "hidden_sec" + [i] %>">
+					<p class="text-justify"><%= returnDocu.narrativeArray[i] %></p>
+				</div>
 			</div>
 		</div>
-	<div class="col-3"></div>
-	<div class="col-6"><hr class="style3"></div>
-	<div class="col-3"></div>
+	<div class="col-1"></div>
+	<div class="col-10"><hr class="style3"></div>
+	<div class="col-1"></div>
 	<% } %>
 </div>
 <hr class="style3">

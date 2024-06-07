@@ -577,6 +577,11 @@ form #msgFile{
 	color: black,
 }
 
+.nerTxt{
+	color: red;
+	font-weight: bold;
+}
+
 .redTxt{
 	color: red;
 }
@@ -733,4 +738,16 @@ form #msgFile{
 #chartdiv2 {
   width: 100%;
   height: 600px;
+}
+
+.rotate{
+    -moz-transition: all .5s linear;
+    -webkit-transition: all .5s linear;
+    transition: all .5s linear;
+}
+
+.rotate.down{
+    -moz-transform:rotate(45deg);
+    -webkit-transform:rotate(45deg);
+    transform:rotate(45deg);
 }
